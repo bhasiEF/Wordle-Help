@@ -57,12 +57,12 @@ del inner_products
 uz = np.delete(np.arange(0,243),242-np.array([81,27,9,3,1]))
 
 # no prior knowledge of answer list
-prob = np.array([np.sum(word_relations == u,axis=1)/num_words for u in uz])
+prob = np.array([np.sum(relations == u,axis=1)/num_words for u in uz])
 log_prob = np.where(prob==0,0,np.log2(prob))
 info = -np.sum(prob*log_prob, axis=0)
 
 # prior knowledge of answer list
-prob2 = np.array([np.sum(word_relations[:,:2315] == u,axis=1)/2315 for u in uz])
+prob2 = np.array([np.sum(relations[:,:2315] == u,axis=1)/2315 for u in uz])
 log_prob2 = np.where(prob2==0,0,np.log2(prob2))
 info2 = -np.sum(prob2*log_prob2, axis=0)
 
